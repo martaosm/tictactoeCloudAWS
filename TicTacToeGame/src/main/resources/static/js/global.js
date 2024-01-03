@@ -1,0 +1,1 @@
+window.myGlobalVariable = 'http://' + window.location.hostname + ':8080'

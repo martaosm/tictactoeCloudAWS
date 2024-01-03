@@ -15,7 +15,7 @@ This guide is addressing users with Windows OS!!!
 5. To build docker image you have to move your app .jar file to EC2 instance:
    - run 'mvn clean package' in your IDE terminal
    - after .jar file is created run this command in your cmd:
-     > pscp -i path\to\your\.ppk path\to\.jar\file ec2-user@<Public DNS>:/home/ec2-user
+     > pscp -i path\to\your\.ppk path\to\.jar\file ec2-user@"Public DNS":/home/ec2-user
 6. Make sure that .jar file was moved to PuTTY, using > ls command
 7. Create Dockerfile, it should look like this:
      FROM openjdk:17-oracle
@@ -24,10 +24,10 @@ This guide is addressing users with Windows OS!!!
      EXPOSE 8080
      CMD [ "java", "-jar",  "/<jar_file_name>.jar"]
 8. Move Dockerfile.prod to EC2 instance as well:
-   >pscp -i path\to\your\.ppk path\to\Dockerfile ec2-user@<Public DNS>:/home/ec2-user
+   >pscp -i path\to\your\.ppk path\to\Dockerfile ec2-user@"Public DNS":/home/ec2-user
 9. To build and run docker image, run this commands:
     > docker build -t <your_choice>/docker -f Dockerfile.prod .
     > docker run -p 8080:8080 <your_choice>/docker
-10. Now your app should beaccessible from http://<public DNS>:8080
+10. Now your app should beaccessible from http://"Public DNS":8080
    
 

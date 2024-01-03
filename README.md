@@ -17,12 +17,12 @@ This guide is addressing users with Windows OS!!!
    - after .jar file is created run this command in your cmd:
      > pscp -i path\to\your\.ppk path\to\.jar\file ec2-user@"Public DNS":/home/ec2-user
 6. Make sure that .jar file was moved to PuTTY, using > ls command
-7. Create Dockerfile, it should look like this: \n
-     FROM openjdk:17-oracle \n
-     ARG JAR_FILE=<jar_file_name>.jar \n
-     COPY ${JAR_FILE} . \n
-     EXPOSE 8080 \n
-     CMD [ "java", "-jar",  "/<jar_file_name>.jar"] \n
+7. Create Dockerfile, it should look like this: <br />
+     FROM openjdk:17-oracle <br />
+     ARG JAR_FILE=<jar_file_name>.jar <br />
+     COPY ${JAR_FILE} . <br />
+     EXPOSE 8080 <br />
+     CMD [ "java", "-jar",  "/<jar_file_name>.jar"] <br />
 8. Move Dockerfile.prod to EC2 instance as well:
    >pscp -i path\to\your\.ppk path\to\Dockerfile ec2-user@"Public DNS":/home/ec2-user
 9. To build and run docker image, run this commands:

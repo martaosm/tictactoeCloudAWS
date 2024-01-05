@@ -12,7 +12,7 @@ This guide is addressing users with Windows OS!!!
    spring.datasource.password=password <br />
    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver <br />
 3. Add this dependency to your pom.xml file: <br />
-   <dependency>  <br />
+   \<dependency>  <br />
       <groupId>com.mysql</groupId>  <br />
 		<artifactId>mysql-connector-j</artifactId>  <br />
 		<scope>runtime</scope>  <br />

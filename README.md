@@ -3,6 +3,24 @@ TicTacToe Game with Cognito Authentication and RDS database
 
 This guide is addressing users with Windows OS!!!
 
+**Setting up and connecting to RDS**
+1. To set up RDS follow this instruction: https://aws.plainenglish.io/deploy-spring-boot-application-with-amazon-rds-7cec634ef3a1
+2. When RDS is set up, add this to your application.properties: <br />
+   spring.jpa.hibernate.ddl-auto=update <br />
+   spring.datasource.url=jdbc:mysql://<endpoint>:<port>/<database "name"> <br />
+   spring.datasource.username=username <br />
+   spring.datasource.password=password <br />
+   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver <br />
+3. Add this dependency to your pom.xml file: <br />
+   <dependency>  <br />
+      <groupId>com.mysql</groupId>  <br />
+		<artifactId>mysql-connector-j</artifactId>  <br />
+		<scope>runtime</scope>  <br />
+	</dependency>  <br />
+ 4. After all this your database should be connected to your app.
+   
+
+
 **EC2 Configuration and Docker Image Deployment**
 
 1. Create EC2 instance and make sure that it is launched. Make sure to allow port 8080 in Inbound Rules in Security Groups

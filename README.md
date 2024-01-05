@@ -1,5 +1,5 @@
 # tictactoeCloudAWS
-TicTacToe Game with Cognito Authentication and RDS database
+TicTacToe Game with Cognito Authentication and RDS database deployed on EC2 instance.
 
 This guide is intended for users with Windows OS!!!
 

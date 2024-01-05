@@ -3,7 +3,9 @@ package com.example.TicTacToeGame.Service;
 
 import com.amazonaws.services.cognitoidp.AWSCognitoIdentityProvider;
 import com.amazonaws.services.cognitoidp.model.*;
+import com.example.TicTacToeGame.Model.Player;
 import com.example.TicTacToeGame.Model.User;
+import com.example.TicTacToeGame.Repository.PlayerRepository;
 import com.example.TicTacToeGame.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,6 +38,9 @@ public class CognitoService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PlayerRepository playerRepository;
+
 
     public User registerUser(String username, String email, String password) {
         // Set up the AWS Cognito registration request
@@ -56,6 +61,12 @@ public class CognitoService {
             registeredUser.setUsername(username);
             registeredUser.setEmail(email);
             registeredUser.setPassword(password);
+
+            Player newPlayer = new Player();
+            newPlayer.setLogin(username);
+            newPlayer.setWins(0);
+            newPlayer.setLoses(0);
+            playerRepository.save(newPlayer);
 
             return userRepository.save(registeredUser);
 

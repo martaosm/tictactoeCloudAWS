@@ -1,0 +1,31 @@
+body{
+    background: #333333;
+    font-family: sans-serif;
+}
+
+#loginBox{
+    background: rgb(2,0,36);
+    background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 20%, rgba(0,212,255,1) 100%);
+    border-radius: 25px;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 200px;
+    padding: 100px;
+    margin-top:100px;
+    margin-left: 500px;
+}
+.inputField{
+    border: white;
+    border-radius: 20px;
+    margin: 20px
+}
+
+.btn{
+    height:40px;
+    width:80px;
+    border-radius: 25px;
+    border: cadetblue;
+    background: cadetblue;
+    margin: 20px;
+}

@@ -9,6 +9,13 @@ h1{
 .clearfix{
     clear: both;
 }
+
+.gameBtn{
+    border-radius: 20px;
+    background: azure;
+    border: azure;
+}
+
 #box{
     width: 350px;
     overflow: auto;

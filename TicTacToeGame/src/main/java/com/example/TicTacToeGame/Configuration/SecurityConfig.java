@@ -18,25 +18,19 @@ import com.nimbusds.jwt.proc.JWTProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.net.URL;
 import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.interfaces.RSAPrivateKey;
-import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -60,7 +54,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(
                 requests -> requests
-                        .requestMatchers("/index.html", "/", "/registrationPage.html","/tictactoegame.html","/home.html")
+                        .requestMatchers("/index.html", "/", "/registrationPage.html","/tictactoegame.html","/home.html","/userListPage.html")
                         .permitAll()
                         .requestMatchers("/js/**","/css/**")
                         .permitAll()
@@ -77,38 +71,11 @@ public class SecurityConfig {
                         .anyRequest()
                         .authenticated()
         ).oauth2ResourceServer((oauth2) -> oauth2.jwt(withDefaults())).cors(Customizer.withDefaults());
-        //.exceptionHandling(e -> e.authenticationEntryPoint(authenticationEntryPoint()));
 
         http.csrf(AbstractHttpConfigurer::disable);
 
         return http.build();
     }
-
-    @Bean
-    public AuthenticationEntryPoint authenticationEntryPoint() {
-        return (request, response, authException) -> {
-            // You can perform additional logic here if needed
-
-            // Redirect to your index.html page
-            response.sendRedirect(request.getContextPath() + "/");
-        };
-    }
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOriginPatterns(Arrays.asList("*"));
-//        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Requestor-Type", "Content-Type"));
-//        configuration.setExposedHeaders(Arrays.asList("X-Get-Header"));
-//        configuration.applyPermitDefaultValues();
-//        configuration.setAllowCredentials(true);
-//        configuration.addAllowedMethod("GET");
-//        configuration.addAllowedMethod("PATCH");
-//        configuration.addAllowedMethod("POST");
-//        configuration.addAllowedMethod("OPTIONS");
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {

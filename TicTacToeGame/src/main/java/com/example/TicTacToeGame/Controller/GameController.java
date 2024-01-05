@@ -10,18 +10,8 @@ import com.example.TicTacToeGame.Model.Player;
 import com.example.TicTacToeGame.Service.GameService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-//import org.springframework.security.access.prepost.PreAuthorize;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.annotation.AuthenticationPrincipal;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-//import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
-//import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-//import org.springframework.security.oauth2.core.user.OAuth2User;
-//import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,11 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RequestMapping("/game")
 public class GameController {
-//    private final OAuth2AuthorizedClientService clientService;
 
-//    public GameController(OAuth2AuthorizedClientService clientService) {
-//        this.clientService = clientService;
-//    }
     private final GameService gameService;
     private final SimpMessagingTemplate simpMessagingTemplate;
 

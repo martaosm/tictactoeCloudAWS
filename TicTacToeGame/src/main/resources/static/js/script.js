@@ -20,6 +20,9 @@
         $.ajax({
             url: myGlobalVariable + "/game/gameplay",
             type: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem("token"),
+            },
             dataType: "json",
             contentType: "application/json",
             data: JSON.stringify({
@@ -53,6 +56,7 @@
         }
         if(data.winner != null){
             alert("Winner is " + data.winner);
+            location.href = "home.html";
         }
         gameOn = true;
     }

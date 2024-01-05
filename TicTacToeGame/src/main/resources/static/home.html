@@ -3,15 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="js/global.js"></script>
+  <link rel="stylesheet" href="css/homePage.css">
   <title>Login</title>
 </head>
 <body>
 <div>
-  <a onclick="goHomePage()">Game</a>
+  <button onclick="goListPage()">Users</button>
+  <button onclick="goGamePage()">Game</button>
 </div>
 <script>
-  function goHomePage(){
-    location.href = "tictactoegame.html";
+  function goListPage(){
+    location.href="userListPage.html"
+  }
+
+  function goGamePage(){
+    location.href="tictactoegame.html"
   }
 </script>
 </body>

@@ -4,20 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="js/global.js"></script>
-  <title>Login</title>
+  <link rel="stylesheet" href="css/registerPage.css">
+  <title>Register</title>
 </head>
 <body>
-<h2>Login</h2>
+<div id="registerBox">
 <form id="loginForm">
-  <label for="email">Email:</label>
-  <input type="text" id="email" name="email" required><br>
-  <label for="username">Username:</label>
-  <input type="text" id="username" name="username" required><br>
-  <label for="password">Password:</label>
-  <input type="password" id="password" name="password" required><br>
-  <button id="registerBtn" type="button" onclick="register()">Register</button>
+<!--  <label for="email">Email:</label>-->
+  Email: <input class="inputField" type="text" id="email" name="email" required><br>
+<!--  <label for="username">Username:</label>-->
+  Username: <input class="inputField" type="text" id="username" name="username" required><br>
+<!--  <label for="password">Password:</label>-->
+  Password: <input class="inputField" type="password" id="password" name="password" required><br>
+  <button class="btn" id="registerBtn" type="button" onclick="register()">Register</button>
 </form>
-<div><b id = "l1">-</b></div>
+</div>
 <script>
   //const url = 'http://ec2-107-21-69-73.compute-1.amazonaws.com:8080';
   function register() {
@@ -36,6 +37,7 @@
       }
     }).then((response) => response.json())
             .then((json) => {
+              alert("Successfully registered!")
               location.href = "index.html";
             })
   }

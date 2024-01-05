@@ -19,7 +19,8 @@ function connectToSocket(gameId){
 }
 
 function create_game(){
-    let login = document.getElementById("login").value;
+    //let login = document.getElementById("login").value;
+    let login = localStorage.getItem("username")
     if(login == null || login ===''){
         alert("Please enter login");
     }else{
@@ -51,7 +52,8 @@ function create_game(){
 }
 
 function connectToRandom(){
-    let login = document.getElementById("login").value;
+    //let login = document.getElementById("login").value;
+    let login = localStorage.getItem("username")
     if(login == null || login ===''){
         alert("Please enter login");
     }else{

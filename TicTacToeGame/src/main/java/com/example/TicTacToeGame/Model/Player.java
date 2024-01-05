@@ -1,6 +1,7 @@
 package com.example.TicTacToeGame.Model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,12 +15,13 @@ public class Player implements Serializable {
     private Long id;
     private String login;
     private Integer wins;
+    private Integer loses;
 
 
     public Player() {
     }
 
-    public Player(String login, Integer wins) {
+    public Player(String login, int wins) {
         this.login = login;
         this.wins = wins;
     }

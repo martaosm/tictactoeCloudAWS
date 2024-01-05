@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -24,21 +25,26 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @GetMapping("/getPlayer/{login}")
-    public Player getPlayer(@PathVariable String login){
-        Optional<Player> player = playerRepository.findByLogin(login);
-        return player.get();
+    @GetMapping("/getAllPlayers")
+    public List<Player> getAllPlayers(@RequestHeader("Authorization")String jwt){
+        return playerRepository.findAll();
     }
 
-    @GetMapping("/getPlayer")
-    public String getPlayer(){
-        return "Acces granted";
-    }
-
-    @GetMapping("/addPlayer/{login}/{wins}")
-    @Transactional
-    public ResponseEntity<Player> addUser(@PathVariable String login, @PathVariable Integer wins) {
-        return ResponseEntity.ok(playerService.addUser(login, wins));
-    }
+//    @GetMapping("/getPlayer/{login}")
+//    public Player getPlayer(@PathVariable String login){
+//        Optional<Player> player = playerRepository.findByLogin(login);
+//        return player.get();
+//    }
+//
+//    @GetMapping("/getPlayer")
+//    public String getPlayer(){
+//        return "Acces granted";
+//    }
+//
+//    @GetMapping("/addPlayer/{login}/{wins}")
+//    @Transactional
+//    public ResponseEntity<Player> addUser(@PathVariable String login, @PathVariable Integer wins) {
+//        return ResponseEntity.ok(playerService.addUser(login, wins));
+//    }
 
 }

@@ -22,7 +22,6 @@ public class GameService {
         Game game = new Game();
         game.setBoard(new int[3][3]);
         game.setGameId(UUID.randomUUID().toString());
-        player = playerService.checkPlayer(player);
         game.setPlayer1(player);
         game.setStatus(GameStatus.NEW);
         GameStorage.getInstance().setGame(game);
@@ -75,9 +74,11 @@ public class GameService {
 
         if(checkWinner(game.getBoard(), TicTacToe.X)){
             game.setWinner(TicTacToe.X);
+            playerService.updatePlayerResults(game);
         }
         if(checkWinner(game.getBoard(), TicTacToe.O)){
             game.setWinner(TicTacToe.O);
+            playerService.updatePlayerResults(game);
         }
 
         GameStorage.getInstance().setGame(game);
@@ -109,4 +110,5 @@ public class GameService {
         }
         return false;
     }
+
 }

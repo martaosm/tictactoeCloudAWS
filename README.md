@@ -1,7 +1,7 @@
 # tictactoeCloudAWS
 TicTacToe Game with Cognito Authentication and RDS database
 
-This guide is addressing users with Windows OS!!!
+This guide is intended for users with Windows OS!!!
 
 **Setting up and connecting to RDS**
 1. To set up RDS follow this instruction: https://aws.plainenglish.io/deploy-spring-boot-application-with-amazon-rds-7cec634ef3a1
@@ -19,12 +19,28 @@ This guide is addressing users with Windows OS!!!
    \</dependency>  <br />
  4. After all this your database should be connected to your app.
    
-
+**Cognito configuration and app integration**
+1. Create user pool using the beginning of this vide tutorial: https://www.youtube.com/watch?v=o2IM9oI6Eqk . Only two differences are:
+   - enable ALLOW_USER_PASSWORD_AUTH in the Client Authentication Flow
+   - don't use Hosted UI
+2. Connect Cognito with your app using this guide: https://dev.to/daviidy/api-security-how-to-implement-authentication-and-authorization-with-aws-cognito-in-spring-boot-4713?fbclid=IwAR1RlEKeoMiZwmdQf8b9IOl-8C1DKezTgGCButUdDape5mgLguxveRD9jQQ
+3. Make sure that your application.properties file contains these lines:
+   spring.security.oauth2.client.registration.cognito.client-id=\<client ID>  <br />
+   spring.security.oauth2.client.registration.cognito.client-secret=\<client secret>   <br />
+   spring.security.oauth2.client.registration.cognito.scope=openid   <br />
+   spring.security.oauth2.client.provider.cognito.issuer-uri=https://cognito-idp.\<region>.amazonaws.com/\<User Pool ID>   <br />
+   spring.security.oauth2.client.registration.cognito.client-name=FrontAppClient   <br />
+   aws.accessKeyId=\<AWS access key>   <br />
+   aws.secretKey=\<AWS secret key>   <br />
+   aws.region=\<aws_region>   <br />
+   spring.security.oauth2.resourceserver.jwt.jwk-set-uri=https://cognito-idp.\<region>.amazonaws.com/\<User Pool ID>/.well-known/jwks.json   <br />
+   sample.jwe-key-value= classpath:simple.priv   <br />
+   
 
 **EC2 Configuration and Docker Image Deployment**
 
-1. Create EC2 instance and make sure that it is launched. Make sure to allow port 8080 in Inbound Rules in Security Groups
-2. Download PuTTY, emulator that will allow us to ssh into our EC2 instance
+1. Create EC2 instance and make sure that it is launched. Make sure to allow port 8080 in Inbound Rules in Security Groups.
+2. Download PuTTY, emulator that will allow us to ssh into our EC2 instance.
 3. Connect to your EC2 instance using PuTTY with the help of this tutorial: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html
 4. After establishing connection, download docker. To do that run this commands:
    > sudo yum update -y

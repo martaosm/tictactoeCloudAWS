@@ -58,10 +58,10 @@ This guide is intended for users with Windows OS!!!
      EXPOSE 8080 <br />
      CMD [ "java", "-jar",  "/<jar_file_name>.jar"] <br />  <br />
 8. Move Dockerfile.prod to EC2 instance as well:
-   >pscp -i path\to\your\.ppk path\to\Dockerfile ec2-user@"Public DNS":/home/ec2-user
+   >pscp -i path\to\your\.ppk path\to\Dockerfile ec2-user@\<Public DNS>:/home/ec2-user
 9. To build and run docker image, run this commands:
     > docker build -t <your_choice>/docker -f Dockerfile.prod .
     > docker run -p 8080:8080 <your_choice>/docker
-10. Now your app should beaccessible from http://"Public DNS":8080
+10. Now your app should beaccessible from http://\<Public DNS>:8080
    
 

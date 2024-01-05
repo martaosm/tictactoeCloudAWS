@@ -24,7 +24,7 @@ This guide is intended for users with Windows OS!!!
    - enable ALLOW_USER_PASSWORD_AUTH in the Client Authentication Flow
    - don't use Hosted UI
 2. Connect Cognito with your app using this guide: https://dev.to/daviidy/api-security-how-to-implement-authentication-and-authorization-with-aws-cognito-in-spring-boot-4713?fbclid=IwAR1RlEKeoMiZwmdQf8b9IOl-8C1DKezTgGCButUdDape5mgLguxveRD9jQQ
-3. Make sure that your application.properties file contains these lines:
+3. Make sure that your application.properties file contains these lines:  <br />  <br />
    spring.security.oauth2.client.registration.cognito.client-id=\<client ID>  <br />
    spring.security.oauth2.client.registration.cognito.client-secret=\<client secret>   <br />
    spring.security.oauth2.client.registration.cognito.scope=openid   <br />

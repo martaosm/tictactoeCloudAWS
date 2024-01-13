@@ -1,0 +1,20 @@
+version: "3.4"
+services:
+
+  backend:
+    container_name: backend
+    hostname: backend
+    build:
+      dockerfile: Dockerfile
+      target: "backend"
+    ports:
+      - "8080:8080"
+    networks:
+      - priv-network
+    environment:
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_KEY:
+      
+networks:
+  priv-network:
+    driver: bridge

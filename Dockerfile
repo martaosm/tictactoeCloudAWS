@@ -7,6 +7,6 @@ RUN mvn install
 
 FROM openjdk:17-oracle
 ARG JAR_FILE=TicTacToeGame-0.0.1-SNAPSHOT.jar
-COPY target/*.jar app.jar
+COPY --from=before "/app/target/*.jar" TicTacToeGame-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 CMD [ "java", "-jar",  "/TicTacToeGame-0.0.1-SNAPSHOT.jar"]

@@ -3,6 +3,8 @@ TicTacToe Game with Cognito Authentication and RDS database deployed on EC2 inst
 
 This guide is intended for users with Windows OS!!!
 
+<h1>Project 1</h1>
+
 **Setting up and connecting to RDS**
 1. To set up RDS follow this instruction: https://aws.plainenglish.io/deploy-spring-boot-application-with-amazon-rds-7cec634ef3a1
 2. When RDS is set up, add this to your application.properties: <br />  <br />
@@ -64,4 +66,17 @@ This guide is intended for users with Windows OS!!!
     > docker run -p 8080:8080 <your_choice>/docker
 10. Now your app should beaccessible from http://\<Public DNS>:8080
    
+<h1>Project 2</h1>
+
+1. Create application in **Applications** tab in **Elastic Beanstalk**
+2. Create environment
+3. For platform choose Docker
+   ![Zrzut ekranu 2024-01-14 225112](https://github.com/martaosm/tictactoeCloudAWS/assets/56367868/bd2514bb-6a4a-4a67-9ba2-bb75fb7a9eaa)
+4. upload your docker-compose file
+   ![Zrzut ekranu 2024-01-14 225144](https://github.com/martaosm/tictactoeCloudAWS/assets/56367868/0515faa3-6881-40bf-a48c-11925edd9822)
+5. After creating environment you can upload a docker-compose file and deploy your app
+![Zrzut ekranu 2024-01-14 225406](https://github.com/martaosm/tictactoeCloudAWS/assets/56367868/2c0d7aef-a711-415e-9894-80432a9d213b)
+6. EC2 instance will be created
+7. App will be available under \<Public DNS>:8080 or under \<elastic-beanstalk-domain>:8080
+
 
